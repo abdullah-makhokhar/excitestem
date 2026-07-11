@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 interface Testimonial {
   quote: string;
   name: string;
@@ -11,25 +12,25 @@ const testimonials: Testimonial[] = [
     quote: "ExciteStem completely changed my outlook on science. The hands-on experiments made everything click!",
     name: "Sarah Jenkins",
     role: "High School Student",
-    avatar: "/images/avatar-1.svg"
+    avatar: `${base}/images/avatar-1.svg`
   },
   {
     quote: "Partnering with ExciteStem has provided our underfunded district with incredible resources and mentorship.",
     name: "David Chen",
     role: "Principal, Lincoln High",
-    avatar: "/images/avatar-2.svg"
+    avatar: `${base}/images/avatar-2.svg`
   },
   {
     quote: "The curriculum is engaging, modern, and directly applicable to real-world engineering problems.",
     name: "Dr. Maya Patel",
     role: "STEM Curriculum Advisor",
-    avatar: "/images/avatar-3.svg"
+    avatar: `${base}/images/avatar-3.svg`
   },
   {
     quote: "Seeing the students' eyes light up when they build their first robot is truly priceless.",
     name: "James Wilson",
     role: "Volunteer Mentor",
-    avatar: "/images/avatar-4.svg"
+    avatar: `${base}/images/avatar-4.svg`
   }
 ];
 ---

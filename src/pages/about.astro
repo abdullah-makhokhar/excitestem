@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 import Layout from '../layouts/Layout.astro';
 import TeamMember from '../components/TeamMember.astro';
 
@@ -7,25 +8,25 @@ const team = [
     name: "Jane Doe",
     title: "Executive Director",
     bio: "Jane has 15 years of experience in educational nonprofit management and is passionate about equitable access to STEM.",
-    image: "/images/avatar-1.svg"
+    image: `${base}/images/avatar-1.svg`
   },
   {
     name: "John Smith",
     title: "Program Director",
     bio: "Former high school physics teacher who designs all of our hands-on curricula.",
-    image: "/images/avatar-2.svg"
+    image: `${base}/images/avatar-2.svg`
   },
   {
     name: "Alice Johnson",
     title: "Community Outreach",
     bio: "Alice builds the vital relationships with our partner schools and volunteer networks.",
-    image: "/images/avatar-3.svg"
+    image: `${base}/images/avatar-3.svg`
   },
   {
     name: "Michael Lee",
     title: "Operations Manager",
     bio: "Ensures that STEM kits and resources arrive on time to every classroom.",
-    image: "/images/avatar-4.svg"
+    image: `${base}/images/avatar-4.svg`
   }
 ];
 
@@ -33,17 +34,17 @@ const values = [
   {
     title: "Equity",
     text: "Every student deserves access to high-quality STEM education.",
-    icon: "/images/icon-equity.svg"
+    icon: `${base}/images/icon-equity.svg`
   },
   {
     title: "Innovation",
     text: "We constantly evolve our teaching methods to stay current with tech trends.",
-    icon: "/images/icon-innovation.svg"
+    icon: `${base}/images/icon-innovation.svg`
   },
   {
     title: "Community",
     text: "True impact requires deep collaboration with local educators and families.",
-    icon: "/images/icon-community.svg"
+    icon: `${base}/images/icon-community.svg`
   }
 ];
 ---
@@ -74,7 +75,7 @@ const values = [
       </div>
       <div class="story-image">
         <!-- REPLACE: Our Story image -->
-        <img src="/images/about-story.svg" alt="Students collaborating" width="500" height="350" class="rounded-img" />
+        <img src={`${base}/images/about-story.svg`} alt="Students collaborating" width="500" height="350" class="rounded-img" />
       </div>
     </div>
   </section>
