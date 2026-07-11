@@ -21,6 +21,7 @@ const { title, description = "ExciteStem is a nonprofit organization dedicated t
 		<title>{title} | ExciteStem</title>
 	</head>
 	<body>
+		<a href="#main-content" class="skip-to-content sr-only">Skip to main content</a>
 		<Header />
 		<main id="main-content">
 			<slot />
@@ -30,6 +31,25 @@ const { title, description = "ExciteStem is a nonprofit organization dedicated t
 </html>
 
 <style>
+	.skip-to-content {
+		position: absolute;
+		top: -40px;
+		left: 0;
+		background: var(--color-primary);
+		color: white;
+		padding: 8px;
+		z-index: 999;
+		transition: top 0.2s;
+	}
+	.skip-to-content:focus {
+		top: 0;
+		outline: none;
+		clip: auto;
+		width: auto;
+		height: auto;
+		margin: auto;
+		overflow: visible;
+	}
 	/* Any layout-specific styles can go here, global styles are in theme.css */
 	main {
 		flex: 1; /* Pushes the footer to the bottom of the viewport */
