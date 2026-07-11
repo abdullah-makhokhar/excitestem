@@ -1,0 +1,37 @@
+---
+import '../styles/theme.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "ExciteStem is a nonprofit organization dedicated to empowering students through STEM education." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title} | ExciteStem</title>
+	</head>
+	<body>
+		<Header />
+		<main id="main-content">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	/* Any layout-specific styles can go here, global styles are in theme.css */
+	main {
+		flex: 1; /* Pushes the footer to the bottom of the viewport */
+	}
+</style>

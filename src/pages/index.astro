@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ImpactMetrics from '../components/ImpactMetrics.astro';
+import TestimonialSlider from '../components/TestimonialSlider.astro';
+import PartnerLogos from '../components/PartnerLogos.astro';
+---
+
+<Layout title="Home" description="ExciteStem - Empowering students through STEM">
+  <!-- Hero Section -->
+  <section class="hero-section section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <!-- REPLACE: hero headline -->
+        <h1 class="hero-title">Sparking Curiosity. Building the Future.</h1>
+        <!-- REPLACE: hero supporting paragraph -->
+        <p class="hero-text">
+          ExciteStem brings hands-on STEM education to under-resourced communities, 
+          inspiring the next generation of engineers, scientists, and innovators.
+        </p>
+        <div class="hero-actions">
+          <!-- REPLACE: Call to action links -->
+          <a href="/donate" class="btn btn-primary">Donate</a>
+          <a href="/about" class="btn btn-outline">Get Involved</a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <!-- REPLACE: hero image -->
+        <img src="/images/hero-students.svg" alt="Students working on a robotics project" width="600" height="400" class="hero-image" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Metrics -->
+  <ImpactMetrics />
+
+  <!-- About Teaser Section -->
+  <section class="section about-teaser">
+    <div class="container">
+      <div class="teaser-grid">
+        <div class="teaser-image-wrapper">
+          <!-- REPLACE: about teaser image -->
+          <img src="/images/about-teaser.svg" alt="Volunteer teaching students" width="500" height="400" class="teaser-image" loading="lazy" />
+        </div>
+        <div class="teaser-content">
+          <h2>Our Mission</h2>
+          <!-- REPLACE: short about text -->
+          <p>
+            We believe that every child deserves the opportunity to explore the wonders of science and technology. 
+            By partnering with local schools and providing accessible, project-based learning materials, we are bridging the educational divide.
+          </p>
+          <a href="/about" class="btn btn-outline">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <TestimonialSlider />
+
+  <!-- Partners -->
+  <PartnerLogos />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .hero-container {
+      flex-direction: row;
+    }
+  }
+
+  .hero-content {
+    flex: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero-text {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image {
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
+  /* About Teaser */
+  .about-teaser {
+    background-color: var(--color-bg);
+  }
+
+  .teaser-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .teaser-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .teaser-image {
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    height: auto;
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+export interface Props {
+  name: string;
+  title: string;
+  bio?: string;
+  image: string;
+}
+
+const { name, title, bio, image } = Astro.props;
+---
+
+<div class="team-card">
+  <img src={image} alt={`Photo of ${name}`} class="team-photo" width="300" height="300" loading="lazy" />
+  <div class="team-info">
+    <h3 class="team-name">{name}</h3>
+    <p class="team-title">{title}</p>
+    {bio && <p class="team-bio">{bio}</p>}
+  </div>
+</div>
+
+<style>
+  .team-card {
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .team-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background-color: var(--color-bg-alt); /* placeholder bg */
+  }
+
+  .team-info {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .team-name {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.25rem;
+  }
+
+  .team-title {
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.875rem;
+  }
+
+  .team-bio {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    flex: 1;
+  }
+</style>

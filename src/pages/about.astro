@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TeamMember from '../components/TeamMember.astro';
+
+const team = [
+  {
+    name: "Jane Doe",
+    title: "Executive Director",
+    bio: "Jane has 15 years of experience in educational nonprofit management and is passionate about equitable access to STEM.",
+    image: "/images/avatar-1.svg"
+  },
+  {
+    name: "John Smith",
+    title: "Program Director",
+    bio: "Former high school physics teacher who designs all of our hands-on curricula.",
+    image: "/images/avatar-2.svg"
+  },
+  {
+    name: "Alice Johnson",
+    title: "Community Outreach",
+    bio: "Alice builds the vital relationships with our partner schools and volunteer networks.",
+    image: "/images/avatar-3.svg"
+  },
+  {
+    name: "Michael Lee",
+    title: "Operations Manager",
+    bio: "Ensures that STEM kits and resources arrive on time to every classroom.",
+    image: "/images/avatar-4.svg"
+  }
+];
+
+const values = [
+  {
+    title: "Equity",
+    text: "Every student deserves access to high-quality STEM education.",
+    icon: "/images/icon-equity.svg"
+  },
+  {
+    title: "Innovation",
+    text: "We constantly evolve our teaching methods to stay current with tech trends.",
+    icon: "/images/icon-innovation.svg"
+  },
+  {
+    title: "Community",
+    text: "True impact requires deep collaboration with local educators and families.",
+    icon: "/images/icon-community.svg"
+  }
+];
+---
+
+<Layout title="About Us">
+  <div class="page-header section section-alt text-center">
+    <div class="container">
+      <h1>About Us</h1>
+      <p class="subtitle">Discover our story and the team behind the mission.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container content-grid">
+      <div class="story-content">
+        <h2>Our Story</h2>
+        <!-- REPLACE: Our Story text -->
+        <p>
+          Founded in 2018, ExciteStem started as a small weekend coding club in a single community center. 
+          We quickly saw the immense hunger for technology education in under-resourced areas. 
+          Students who had never touched a robotics kit were suddenly building automated systems within weeks.
+        </p>
+        <p>
+          Today, we partner with schools across multiple states, providing not just the equipment, 
+          but the curriculum and teacher training needed to build sustainable STEM programs. 
+          Our goal is to ensure that the creators of tomorrow's technology represent the diversity of our world today.
+        </p>
+      </div>
+      <div class="story-image">
+        <!-- REPLACE: Our Story image -->
+        <img src="/images/about-story.svg" alt="Students collaborating" width="500" height="350" class="rounded-img" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="text-center mb-lg">Our Values</h2>
+      <div class="values-grid">
+        {values.map(val => (
+          <div class="value-card">
+            <!-- REPLACE: Value icon -->
+            <img src={val.icon} alt={`${val.title} icon`} width="48" height="48" class="value-icon" />
+            <h3>{val.title}</h3>
+            <p>{val.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center mb-lg">Meet the Team</h2>
+      <div class="team-grid">
+        {team.map(member => (
+          <TeamMember {...member} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content-grid {
+    display: grid;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .content-grid {
+      grid-template-columns: 3fr 2fr;
+    }
+  }
+
+  .rounded-img {
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    height: auto;
+  }
+
+  .mb-lg {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .value-card {
+    background-color: var(--color-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+
+  .value-icon {
+    margin: 0 auto var(--spacing-md);
+    display: block;
+    filter: invert(47%) sepia(85%) saturate(350%) hue-rotate(75deg) brightness(92%) contrast(85%); /* approximate primary color */
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+</style>

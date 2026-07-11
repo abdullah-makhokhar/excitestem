@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PartnerLogos from '../components/PartnerLogos.astro';
+
+const programs = [
+  {
+    title: "After-School Coding Clubs",
+    description: "Our flagship program brings introductory computer science to middle schools. Students learn Python, web development, and game design in a supportive environment.",
+    image: "/images/hero-students.svg" // Reusing placeholder
+  },
+  {
+    title: "Robotics Workshops",
+    description: "Hands-on engineering workshops where students design, build, and program their own robots to solve real-world challenges.",
+    image: "/images/about-teaser.svg" // Reusing placeholder
+  },
+  {
+    title: "Summer STEM Camps",
+    description: "Intensive week-long camps covering advanced topics like 3D printing, artificial intelligence, and environmental science.",
+    image: "/images/about-story.svg" // Reusing placeholder
+  }
+];
+---
+
+<Layout title="Programs & Partners">
+  <div class="page-header section section-alt text-center">
+    <div class="container">
+      <h1>Programs & Partners</h1>
+      <p class="subtitle">Empowering students through comprehensive, hands-on learning.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center mb-lg">Our Core Programs</h2>
+      <div class="programs-grid">
+        {programs.map(program => (
+          <div class="program-card">
+            <img src={program.image} alt={`Image representing ${program.title}`} class="program-image" width="400" height="250" loading="lazy" />
+            <div class="program-content">
+              <h3>{program.title}</h3>
+              <p>{program.description}</p>
+              <!-- REPLACE: Link to individual program pages if needed -->
+              <a href="#contact" class="btn btn-outline program-btn">Learn More</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reusing the Partner Logos component -->
+  <PartnerLogos />
+
+</Layout>
+
+<style>
+  .page-header {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .mb-lg {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .program-card {
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .program-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .program-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background-color: var(--color-bg-alt);
+  }
+
+  .program-content {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .program-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .program-content p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+    flex: 1;
+  }
+
+  .program-btn {
+    align-self: flex-start;
+  }
+</style>

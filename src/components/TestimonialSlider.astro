@@ -1,0 +1,294 @@
+---
+interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  avatar: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    quote: "ExciteStem completely changed my outlook on science. The hands-on experiments made everything click!",
+    name: "Sarah Jenkins",
+    role: "High School Student",
+    avatar: "/images/avatar-1.svg"
+  },
+  {
+    quote: "Partnering with ExciteStem has provided our underfunded district with incredible resources and mentorship.",
+    name: "David Chen",
+    role: "Principal, Lincoln High",
+    avatar: "/images/avatar-2.svg"
+  },
+  {
+    quote: "The curriculum is engaging, modern, and directly applicable to real-world engineering problems.",
+    name: "Dr. Maya Patel",
+    role: "STEM Curriculum Advisor",
+    avatar: "/images/avatar-3.svg"
+  },
+  {
+    quote: "Seeing the students' eyes light up when they build their first robot is truly priceless.",
+    name: "James Wilson",
+    role: "Volunteer Mentor",
+    avatar: "/images/avatar-4.svg"
+  }
+];
+---
+
+<section class="section testimonial-section">
+  <div class="container">
+    <h2 class="text-center">What People Are Saying</h2>
+    
+    <div class="slider-container" aria-roledescription="carousel" aria-label="Testimonials">
+      <div class="slider-track" id="testimonial-track">
+        {testimonials.map((t, index) => (
+          <div 
+            class="slide" 
+            role="group" 
+            aria-roledescription="slide" 
+            aria-label={`${index + 1} of ${testimonials.length}`}
+            data-index={index}
+          >
+            <div class="testimonial-card">
+              <blockquote class="quote">"{t.quote}"</blockquote>
+              <div class="author">
+                <img src={t.avatar} alt={`Avatar of ${t.name}`} class="avatar" width="60" height="60" />
+                <div class="author-info">
+                  <div class="author-name">{t.name}</div>
+                  <div class="author-role">{t.role}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button class="slider-control prev" aria-label="Previous Testimonial" id="testim-prev">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      
+      <button class="slider-control next" aria-label="Next Testimonial" id="testim-next">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <div class="slider-dots" role="tablist">
+        {testimonials.map((_, index) => (
+          <button 
+            class="dot" 
+            role="tab" 
+            aria-label={`Go to slide ${index + 1}`} 
+            aria-selected={index === 0 ? "true" : "false"}
+            data-index={index}
+          ></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-section {
+    background-color: var(--color-bg);
+  }
+
+  .slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--spacing-lg) 0;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 0 var(--spacing-xl);
+  }
+
+  .testimonial-card {
+    background-color: var(--color-bg-alt);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+
+  .quote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin: 0 0 var(--spacing-lg) 0;
+    line-height: 1.8;
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ddd; /* placeholder bg */
+  }
+
+  .author-info {
+    text-align: left;
+  }
+
+  .author-name {
+    font-weight: 700;
+    color: var(--color-heading);
+  }
+
+  .author-role {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .slider-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    color: var(--color-text);
+    transition: all 0.2s;
+    z-index: 10;
+  }
+
+  .slider-control:hover, .slider-control:focus {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    outline: none;
+  }
+
+  .slider-control.prev { left: 0; }
+  .slider-control.next { right: 0; }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-border);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding: 0;
+  }
+
+  .dot[aria-selected="true"] {
+    background-color: var(--color-primary);
+  }
+
+  @media (max-width: 600px) {
+    .slide {
+      padding: 0 var(--spacing-sm);
+    }
+    .slider-control {
+      display: none; /* Rely on swipe for mobile */
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('testimonial-track');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const prevBtn = document.getElementById('testim-prev');
+    const nextBtn = document.getElementById('testim-next');
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    const container = document.querySelector('.slider-container');
+    
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+    let autoplayInterval: number;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const updateSlider = (index: number) => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+    };
+
+    const nextSlide = () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlider(currentIndex);
+    };
+
+    const prevSlide = () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlider(currentIndex);
+    };
+
+    prevBtn?.addEventListener('click', prevSlide);
+    nextBtn?.addEventListener('click', nextSlide);
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateSlider(currentIndex);
+      });
+    });
+
+    // Touch events for swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', e => {
+      touchStartX = (e as TouchEvent).changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', e => {
+      touchEndX = (e as TouchEvent).changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    const handleSwipe = () => {
+      const threshold = 50;
+      if (touchStartX - touchEndX > threshold) nextSlide();
+      if (touchEndX - touchStartX > threshold) prevSlide();
+    };
+
+    // Autoplay
+    const startAutoplay = () => {
+      if (!prefersReducedMotion) {
+        autoplayInterval = window.setInterval(nextSlide, 6000);
+      }
+    };
+
+    const stopAutoplay = () => {
+      clearInterval(autoplayInterval);
+    };
+
+    container?.addEventListener('mouseenter', stopAutoplay);
+    container?.addEventListener('mouseleave', startAutoplay);
+    container?.addEventListener('focusin', stopAutoplay);
+    container?.addEventListener('focusout', startAutoplay);
+
+    startAutoplay();
+  });
+</script>

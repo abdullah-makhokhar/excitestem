@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Us">
+  <div class="page-header section section-alt text-center">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p class="subtitle">We'd love to hear from you. Get in touch with our team.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container contact-container">
+      
+      <div class="contact-info-block">
+        <h2>Get in Touch</h2>
+        <p>Whether you're interested in partnering, volunteering, or just have a question, please don't hesitate to reach out.</p>
+        
+        <div class="info-item">
+          <h3>Email</h3>
+          <!-- REPLACE: Email address -->
+          <p><a href="mailto:info@excitestem.org">info@excitestem.org</a></p>
+        </div>
+        
+        <div class="info-item">
+          <h3>Phone</h3>
+          <!-- REPLACE: Phone number -->
+          <p>(555) 123-4567</p>
+        </div>
+        
+        <div class="info-item">
+          <h3>Address</h3>
+          <!-- REPLACE: Physical address -->
+          <p>123 Education Way<br>Learning City, ST 12345</p>
+        </div>
+
+        <div class="map-placeholder">
+          <!-- REPLACE: Google Maps iframe. Get it from maps.google.com -> Share -> Embed a map -->
+          <img src="/images/map-placeholder.svg" alt="Map indicating ExciteStem location" class="map-image" />
+        </div>
+      </div>
+
+      <div class="contact-form-block">
+        <div class="form-card">
+          <h2>Send a Message</h2>
+          <!-- 
+            REPLACE: Formspree endpoint.
+            To make this form work:
+            1. Sign up for a free account at formspree.io
+            2. Create a new form
+            3. Replace the action URL below with your Formspree endpoint URL
+          -->
+          <form action="https://formspree.io/f/your_form_id_here" method="POST" class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-full">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-container {
+    display: grid;
+    gap: var(--spacing-xl);
+  }
+
+  @media (min-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .info-item {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .info-item h3 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-item p {
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  .map-placeholder {
+    margin-top: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--color-bg-alt);
+    height: 250px;
+  }
+
+  .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .form-card {
+    background-color: var(--color-bg-alt);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .form-group label {
+    font-weight: 500;
+    color: var(--color-heading);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+  }
+
+  .w-full {
+    width: 100%;
+  }
+</style>
