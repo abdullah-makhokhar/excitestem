@@ -1,6 +1,6 @@
 ---
 const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
-const logos = Array.from({ length: 8 }).map((_, i) => ({
+const logos = Array.from({ length: 3 }).map((_, i) => ({
   alt: `Partner Organization ${i + 1}`,
   src: `/images/partner-${i + 1}.svg`
 }));
@@ -9,15 +9,15 @@ const logos = Array.from({ length: 8 }).map((_, i) => ({
 <section class="section partner-section">
   <div class="container">
     <h2 class="text-center sr-only">Our Partners</h2>
-    <p class="text-center text-muted partner-intro">Trusted by leading organizations across the nation</p>
+    <p class="text-center text-muted partner-intro">Trusted by leading organizations across the world</p>
     
     <div class="logo-grid">
-      {logos.map((logo) => (
-        <div class="logo-item">
-          <!-- REPLACE: Partner logos. Links can be wrapped around images -->
-          <img src={logo.src} alt={logo.alt} width="120" height="60" loading="lazy" />
-        </div>
-      ))}
+      <div class="logo-item">
+        <!-- REPLACE: Partner logos. Links can be wrapped around images -->
+        <img src='/images/partner-Akanksha.png' alt='' width="120" height="120" loading="lazy" />
+        <img src='/images/partner-Lightyear Foundation.png' alt='' width="120" height="120" loading="lazy" />
+        <img src='/images/partner-Faith Academy.png' alt='' width="120" height="120" loading="lazy" />
+      </div>
     </div>
   </div>
 </section>
@@ -45,7 +45,7 @@ const logos = Array.from({ length: 8 }).map((_, i) => ({
   .logo-item img {
     filter: grayscale(100%) opacity(0.7);
     transition: all 0.3s ease;
-    max-height: 60px;
+    max-height: 100px;
     width: auto;
   }
 

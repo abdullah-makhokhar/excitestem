@@ -5,28 +5,22 @@ import TeamMember from '../components/TeamMember.astro';
 
 const team = [
   {
-    name: "Jane Doe",
-    title: "Executive Director",
-    bio: "Jane has 15 years of experience in educational nonprofit management and is passionate about equitable access to STEM.",
-    image: `${base}/images/avatar-1.svg`
+    name: "Abdullah Khokhar",
+    title: "Co-Founder",
+    bio: "Passionate about Technology and Business, and how they come together.",
+    image: `${base}/images/avatar-1.jpg`
   },
   {
-    name: "John Smith",
-    title: "Program Director",
-    bio: "Former high school physics teacher who designs all of our hands-on curricula.",
-    image: `${base}/images/avatar-2.svg`
+    name: "Vineeth Godavarti",
+    title: "Co-Founder",
+    bio: "Passionate about STEM and hands-on learning.",
+    image: `${base}/images/avatar-2.jpg`
   },
   {
-    name: "Alice Johnson",
-    title: "Community Outreach",
-    bio: "Alice builds the vital relationships with our partner schools and volunteer networks.",
-    image: `${base}/images/avatar-3.svg`
-  },
-  {
-    name: "Michael Lee",
-    title: "Operations Manager",
-    bio: "Ensures that STEM kits and resources arrive on time to every classroom.",
-    image: `${base}/images/avatar-4.svg`
+    name: "Aashrith Ram",
+    title: "Co-Founder",
+    bio: "Passionate about business and building long lasting connections with people.",
+    image: `${base}/images/avatar-3.jpg`
   }
 ];
 
@@ -63,19 +57,15 @@ const values = [
         <h2>Our Story</h2>
         <!-- REPLACE: Our Story text -->
         <p>
-          Founded in 2018, ExciteStem started as a small weekend coding club in a single community center. 
-          We quickly saw the immense hunger for technology education in under-resourced areas. 
-          Students who had never touched a robotics kit were suddenly building automated systems within weeks.
+          Founded in 2025, we wanted to provide students with the tools and knowledge to not only learn STEM, but to be able to apply it in the real world, with real use cases.
         </p>
         <p>
-          Today, we partner with schools across multiple states, providing not just the equipment, 
-          but the curriculum and teacher training needed to build sustainable STEM programs. 
-          Our goal is to ensure that the creators of tomorrow's technology represent the diversity of our world today.
+          We go further than most STEM programs by providing students with the opportunity to learn about entrepreneurship, business, and how to apply their STEM knowledge in real-world scenarios. Things like interview prep, public speaking, and business fundamentals are all part of our curriculum, which is designed to prepare students for the future.
         </p>
       </div>
       <div class="story-image">
         <!-- REPLACE: Our Story image -->
-        <img src={`${base}/images/about-story.svg`} alt="Students collaborating" width="500" height="350" class="rounded-img" />
+        <img src={`${base}/images/about-story.png`} alt="Students collaborating" width="500" height="350" class="rounded-img" />
       </div>
     </div>
   </section>
@@ -87,7 +77,6 @@ const values = [
         {values.map(val => (
           <div class="value-card">
             <!-- REPLACE: Value icon -->
-            <img src={val.icon} alt={`${val.title} icon`} width="48" height="48" class="value-icon" />
             <h3>{val.title}</h3>
             <p>{val.text}</p>
           </div>
